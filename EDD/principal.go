@@ -1,17 +1,18 @@
 package main
 
 import (
-	"fmt"
+	"./ListaSimple"
 )
 
 func main() {
-	fmt.Println("")
-	lsSimp := lse.newLista()
-	lsSimp.insertar(1)
-	lsSimp.insertar(2)
-	lsSimp.insertar(3)
-	lsSimp.insertar(4)
-	lsSimp.insertar(5)
-	lsSimp.insertar(6)
-	lsSimp.imprimir()
+	lsSimp := ListaSimple.NewLista()
+	lsSimp.Insertar(1)
+	lsSimp.Insertar(2)
+	lsSimp.Insertar(3)
+	lsSimp.Insertar(4)
+	lsSimp.Insertar(5)
+	lsSimp.Insertar(6)
+	lsSimp.Imprimir()
+	primero := lsSimp.GetPrimero()
+	primero.ImprimirNodo()
 }

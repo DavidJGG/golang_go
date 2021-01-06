@@ -1,4 +1,4 @@
-package lse
+package ListaSimple
 
 import "fmt"
 
@@ -7,8 +7,12 @@ type Nodo struct {
 	siguiente *Nodo
 }
 
-func (this *Nodo) imprimirNodo() {
-	fmt.Println(this)
+func (this *Nodo) ImprimirNodo() {
+	fmt.Println(*this)
+	if this.siguiente == nil {
+		return
+	}
+	(*this).siguiente.ImprimirNodo()
 }
 
 func (this *Nodo) getValor() int {
@@ -22,6 +26,14 @@ type Lista struct {
 	ultimo  *Nodo
 }
 
+func NewLista() Lista {
+	return Lista{nil, nil}
+}
+
+func (this *Lista) GetPrimero() *Nodo {
+	return this.primero
+}
+
 func (this Lista) nuevoNodo(val int) *Nodo {
 	nuevo := new(Nodo)
 	(*nuevo).valor = val
@@ -29,7 +41,7 @@ func (this Lista) nuevoNodo(val int) *Nodo {
 	return nuevo
 }
 
-func (this Lista) insertar(val int) {
+func (this *Lista) Insertar(val int) {
 	nuevo := this.nuevoNodo(val)
 	if this.primero == nil {
 		this.primero = nuevo
@@ -40,15 +52,12 @@ func (this Lista) insertar(val int) {
 	}
 }
 
-func (this Lista) imprimir() {
+func (this *Lista) Imprimir() {
+	fmt.Println(this.primero)
 	aux := this.primero
 	for aux != nil {
 		fmt.Printf("[ %v ] -> ", aux.valor)
 		aux = aux.siguiente
 	}
 	fmt.Println(" null")
-}
-
-func newLista() Lista {
-	return Lista{nil, nil}
 }
