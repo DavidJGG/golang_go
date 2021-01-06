@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"./ListaSimple"
 )
 
@@ -15,4 +17,6 @@ func main() {
 	lsSimp.Imprimir()
 	primero := lsSimp.GetPrimero()
 	primero.ImprimirNodo()
+
+	fmt.Println("simon")
 }
